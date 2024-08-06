@@ -28,5 +28,23 @@ container.addEventListener("click", () => {
 
     const barWidth = canvas.width / bufferLength;
     let barHeight;
-    let x = 0;
+    let x;
+
+    function animate () {
+        x = 0;
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        analyzer.getByteFrequencyData(dataArray); //copies frequency data into array
+
+        for (let i = 0; i < bufferLength; i++) {
+            barHeight = dataArray[i];
+            ctx.fillStyle = "white";
+            ctx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
+            x += barWidth;
+        }
+
+        requestAnimationFrame(animate);
+    }
+
+    animate();
 });
