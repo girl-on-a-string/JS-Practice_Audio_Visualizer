@@ -1,5 +1,7 @@
 //variables
 
+const file = document.getElementById("file-upload");
+
 let audio1 = new Audio('heavy-rain-daniel_simon.mp3');
 const audioCtx = new AudioContext();
 
@@ -37,7 +39,7 @@ container.addEventListener("click", () => {
         analyzer.getByteFrequencyData(dataArray); //copies frequency data into array
 
         for (let i = 0; i < bufferLength; i++) {
-            barHeight = dataArray[i];
+            barHeight = dataArray[i] * 2;
             ctx.fillStyle = "white";
             ctx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
             x += barWidth;
@@ -47,4 +49,8 @@ container.addEventListener("click", () => {
     }
 
     animate();
+});
+
+file.addEventListener("change", () => {
+    
 });

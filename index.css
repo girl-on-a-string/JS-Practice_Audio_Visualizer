@@ -22,3 +22,10 @@
     display: block;
 }
 
+input {
+    top: 150px;
+    color: white;
+    position: absolute;
+    z-index: 100;
+}
+
